@@ -18,9 +18,29 @@ $ go get github.com/kahlys/driver/<drivername>
 
 ## Drivers
 
+- **Mobimel**: [Documentation FR](http://www.mobimel.com/envoi-automatise-par-requetes-http) - [Example](#mobimel)
 - **OVH**: [Documentation FR](https://docs.ovh.com/fr/sms/envoyer_des_sms_depuis_une_url_-_http2sms/) - [Example](#ovh)
 
 ## Examples
+
+### Mobimel
+
+```go
+import (
+    "github/kahlys/sms"
+    _ "github/kahlys/sms/driver/mobimel"
+)
+
+func main() {
+    param := map[string]string{
+        "login":"bruce", 
+        "password": "91939", 
+        "sender": "wayne",
+    }
+    sender, _ := sms.Init("mobimel", param)
+    sender.Send("Meet me at the roof !", "+33666666666")
+}
+```
 
 ### OVH
 
