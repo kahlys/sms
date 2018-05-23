@@ -18,4 +18,26 @@ $ go get github.com/kahlys/driver/<drivername>
 
 ## Drivers
 
+- **OVH**: [Documentation FR](https://docs.ovh.com/fr/sms/envoyer_des_sms_depuis_une_url_-_http2sms/) - [Example](#ovh)
+
 ## Examples
+
+### OVH
+
+```go
+import (
+    "github.com/kahlys/sms"
+    _ "github.com/kahlys/sms/driver/ovh"
+)
+
+func main() {
+    param := map[string]string{
+        "account":"sms-xx4242-7",
+        "login":"bruce", 
+        "password": "91939", 
+        "sender": "wayne",
+    }
+    sender, _ := sms.Init("ovh", param)
+    sender.Send("Meet me at the roof !", "+33666666666")
+}
+```
